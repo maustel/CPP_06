@@ -14,6 +14,9 @@
 # define __SCALARCONVERTER_HPP__
 
 # include <iostream>
+# include "ScalarConverterOutput.hpp"
+# include "ScalarConverterTypes.hpp"
+# include "colors.h"
 
 /*
 As this class doesn’t need to store anything at all, this class must not be instanciable by

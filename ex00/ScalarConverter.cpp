@@ -26,9 +26,20 @@ ScalarConverter::ScalarConverter(const ScalarConverter &other)
 ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other)
 {
 	(void)other;
+	return (*this);
 }
 
-void ScalarConverter::convert(std::string str)
+void ScalarConverter::convert(std::string value_as_str)
 {
+	double	value = 0;
 
+	try
+	{
+		value = convert_value_to_type(value_as_str);
+		outputValue(value);
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << RED << e.what() << '\n';
+	}
 }

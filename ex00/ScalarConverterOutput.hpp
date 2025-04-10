@@ -1,25 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.cpp                                           :+:      :+:    :+:   */
+/*   ScalarConverterOutput.hpp                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: maustel <maustel@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/04 10:24:41 by maustel           #+#    #+#             */
-/*   Updated: 2025/04/04 10:24:41 by maustel          ###   ########.fr       */
+/*   Created: 2025/04/10 11:28:35 by maustel           #+#    #+#             */
+/*   Updated: 2025/04/10 11:28:35 by maustel          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ScalarConverter.hpp"
+#ifndef __SCALARCONVERTEROUTPUT_HPP__
+# define __SCALARCONVERTEROUTPUT_HPP__
 
-int main(int argc, char **argv)
-{
-	if (argc != 2)
-	{
-		std::cerr << RED << "Wrong amount of arguments!" << RESET << std::endl;
-		return (1);
-	}
-	else
-		ScalarConverter::convert(argv[1]);
-	return (0);
-}
+# include <iostream>
+
+void outputChar(double value);
+void outputInt(double value);
+void outputFloat(double value);
+void outputDouble(double value);
+
+void outputValue(double value);
+
+#endif

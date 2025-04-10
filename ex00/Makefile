@@ -15,7 +15,7 @@ CC = c++
 
 FLAGS = -Wall -Wextra -Werror -std=c++17
 
-SRC = main.cpp ScalarConverter.cpp
+SRC = main.cpp ScalarConverter.cpp ScalarConverterOutput.cpp ScalarConverterTypes.cpp
 OBJ = $(SRC:.cpp=.o)
 
 all: $(NAME)
@@ -32,7 +32,7 @@ clean:
 	rm -f $(OBJ)
 
 fclean: clean
-	rm -f ($NAME)
+	rm -f $(NAME)
 
 re: fclean all
 
