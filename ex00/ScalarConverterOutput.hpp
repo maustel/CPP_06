@@ -22,6 +22,6 @@ void outputInt(double value);
 void outputFloat(double value);
 void outputDouble(double value);
 
-void outputValue(double value);
+void outputValues(double value);
 
 #endif

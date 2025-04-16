@@ -12,14 +12,19 @@
 
 #include "ScalarConverterTypes.hpp"
 
+/*
+Converts String-value into double value (double because it can contain all asked values)
+std::numeric_limits<double>::quiet_NaN() -> returns nan as value
+std::numeric_limits<double>::infinity() -> returns inf as value
+*/
 double convert_value_to_type(const std::string strValue)
 {
 	if(isNan(strValue))
 		return std::numeric_limits<double>::quiet_NaN();
-	else if(isNegInfinite(strValue))
-		return -std::numeric_limits<double>::infinity();
 	else if(isPosInfinite(strValue))
 		return std::numeric_limits<double>::infinity();
+	else if(isNegInfinite(strValue))
+		return -std::numeric_limits<double>::infinity();
 	if (isChar(strValue))
 		return (convertToChar(strValue));
 	else if (isFloat(strValue))

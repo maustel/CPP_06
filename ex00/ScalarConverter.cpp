@@ -36,7 +36,7 @@ void ScalarConverter::convert(std::string value_as_str)
 	try
 	{
 		value = convert_value_to_type(value_as_str);
-		outputValue(value);
+		outputValues(value);
 	}
 	catch(const std::exception& e)
 	{

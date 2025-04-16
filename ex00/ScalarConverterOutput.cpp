@@ -14,7 +14,7 @@
 #include "ScalarConverterTypes.hpp"
 #include "colors.h"
 
-void outputValue(double value)
+void outputValues(double value)
 {
 	outputChar(value);
 	outputInt(value);
