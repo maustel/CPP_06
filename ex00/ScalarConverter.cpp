@@ -40,6 +40,10 @@ void ScalarConverter::convert(std::string value_as_str)
 	}
 	catch(const std::exception& e)
 	{
-		std::cerr << RED << e.what() << '\n';
+		std::cerr << RED << "Error: " << e.what() << std::endl;
+		std::cout << YEL << "char: " << "impossible" << RESET << std::endl;
+		std::cout << BLU << "int: " << "impossible" << RESET << std::endl;
+		std::cout << MAG << "float: " << "impossible" << RESET << std::endl;
+		std::cout << GRN << "double: " << "impossible" << RESET << std::endl;
 	}
 }

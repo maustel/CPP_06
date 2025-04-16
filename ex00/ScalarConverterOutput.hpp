@@ -14,6 +14,8 @@
 # define __SCALARCONVERTEROUTPUT_HPP__
 
 # include <iostream>
+#include <math.h>
+#include <iomanip>
 
 void outputChar(double value);
 void outputInt(double value);

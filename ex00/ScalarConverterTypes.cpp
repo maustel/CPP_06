@@ -14,20 +14,20 @@
 
 double convert_value_to_type(const std::string strValue)
 {
+	if(isNan(strValue))
+		return std::numeric_limits<double>::quiet_NaN();
+	else if(isNegInfinite(strValue))
+		return -std::numeric_limits<double>::infinity();
+	else if(isPosInfinite(strValue))
+		return std::numeric_limits<double>::infinity();
 	if (isChar(strValue))
 		return (convertToChar(strValue));
+	else if (isFloat(strValue))
+		return (convertToFloat(strValue));
+	else if (isDouble(strValue))
+		return (convertToDouble(strValue));
 	else if (isInt(strValue))
 		return (convertToInt(strValue));
-	// else if (isFloat(strValue))
-	// 	return (convertToFloat(strValue));
-	// else if (isDouble(strValue))
-	// 	return (convertToDouble(strValue));
-	// else if (isNegInfinite(strValue))
-	// 	return; //somerthing
-	// else if (isPosInfinite(strValue))
-	// 	return; //somerthing
-	// else if (isNotANumber(strValue))
-	// 	return ;//somerthing
 	else
 		throw std::invalid_argument("Invalid Input!");
 }
@@ -35,21 +35,14 @@ double convert_value_to_type(const std::string strValue)
 /*-----------***_____CHAR_____***-----------------------------------*/
 
 /*-------------------------------------------------------------------
-A valid character literal must be exactly 3 characters long
-Example: 'a' consists of:
-- Opening single quote (first character)
-- The actual character (second character)
-- Closing single quote (third character)
-isprint(value[1])):
--Checks if the middle character is printable
+A valid character literal must be exactly 1 character long
+isprint(value[0])):
+-Checks if the character is printable
 --------------------------------------------------------------------*/
 bool isChar(std::string strValue)
 {
 	if (strValue.size() == 1 && isprint(strValue[0]) && !std::isdigit(strValue[0]))
-	{
-		std::cout << "type is char." << std::endl;
 		return (true);
-	}
 	else
 	return (false);
 }
@@ -69,56 +62,74 @@ bool isInt(std::string strValue)
 	while (i < strValue.length())
 	{
 		if (!std::isdigit(strValue[i]))
-		return (false);
+			return (false);
 		i++;
 	}
-	std::cout << "type is int." << std::endl;
 	return (true);
 }
 
 double convertToInt(std::string strValue)
 {
-	//do something to handle big numbers
 	return (std::stoi(strValue));
 }
 
 /*-----------***_____FLOAT_____***-----------------------------------*/
 
+/*-------------------------------------------------------------------
+std::string::npos -> a special value representing "not found"
+--------------------------------------------------------------------*/
 bool isFloat(std::string strValue)
 {
-	//todo
+	if(strValue.find('f') != std::string::npos)
+		return (true);
+	return (false);
 }
 
 double convertToFloat(std::string strValue)
 {
-	//todo
+	return (std::stof(strValue));
 }
 
-/*-----------***_____DOUBLE_____***-----------------------------------*/
+// /*-----------***_____DOUBLE_____***-----------------------------------*/
 
 bool isDouble(std::string strValue)
 {
-	//todo
+	if(strValue.find('.') != std::string::npos)
+		return (true);
+	return (false);
 }
 
 double convertToDouble(std::string strValue)
 {
-	//todo
+	return (std::stod(strValue));
 }
 
-/*-----------***_____OTHER_STUFF_____***-----------------------------------*/
+// /*-----------***_____OTHER_STUFF_____***-----------------------------------*/
 
-bool isNotANumber(std::string strValue)
+/*-------------------------------------------------------------------
+Is Not a Number
+--------------------------------------------------------------------*/
+bool isNan(std::string strValue)
 {
-	//todo
+	if(strValue == "nanf" || strValue == "nan")
+		return (true);
+	return (false);
 }
+
+/*-------------------------------------------------------------------
+Is infinite
+--------------------------------------------------------------------*/
 
 bool isPosInfinite(std::string strValue)
 {
-	//todo
+	if(strValue == "+inff" || strValue == "+inf")
+		return (true);
+	return (false);
 }
 
 bool isNegInfinite(std::string strValue)
 {
-	//todo
+	if(strValue == "-inff" || strValue == "-inf")
+		return (true);
+	return (false);
 }
