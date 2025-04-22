@@ -49,7 +49,7 @@ bool isChar(std::string strValue)
 	if (strValue.size() == 1 && isprint(strValue[0]) && !std::isdigit(strValue[0]))
 		return (true);
 	else
-	return (false);
+		return (false);
 }
 
 double convertToChar(std::string strValue)
@@ -63,7 +63,7 @@ bool isInt(std::string strValue)
 {
 	size_t i = 0;
 	while(strValue[i] == '+' || strValue[i] == '-')
-	i++;
+		i++;
 	while (i < strValue.length())
 	{
 		if (!std::isdigit(strValue[i]))
@@ -97,6 +97,14 @@ double convertToFloat(std::string strValue)
 
 // /*-----------***_____DOUBLE_____***-----------------------------------*/
 
+/*-------------------------------------------------------------------
+double has only 53 bits of precision (about 15 decimal digits), which is insufficient
+to represent 16-digit number accurately.
+(float has 31)
+The conversion process loses precision because:
+Only ~6 significant digits are guaranteed to be precise
+The remaining digits are approximated
+--------------------------------------------------------------------*/
 bool isDouble(std::string strValue)
 {
 	if(strValue.find('.') != std::string::npos)

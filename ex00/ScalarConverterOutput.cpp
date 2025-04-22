@@ -40,6 +40,7 @@ void outputInt(double value)
 	else
 		std::cout << BLU << "int: " << "impossible" << RESET << std::endl;
 }
+
 /*
 std::setprecision(1) sets the floating-point precision to 1 decimal place
 std::fixed forces floating-point numbers to be displayed in fixed-point
@@ -47,10 +48,18 @@ std::fixed forces floating-point numbers to be displayed in fixed-point
 */
 void outputFloat(double value)
 {
-	std::cout << MAG << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(value) << "f" << RESET << std::endl;
+	if (std::isfinite(value) &&	value >= std::numeric_limits<float>::min() &&
+		value <= std::numeric_limits<float>::max())
+			std::cout << MAG << "float: " << std::fixed << std::setprecision(1) << static_cast<float>(value) << "f" << RESET << std::endl;
+	else
+		std::cout << MAG << "float: " << "impossible" << RESET << std::endl;
 }
 
 void outputDouble(double value)
 {
-	std::cout << GRN << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(value) << RESET << std::endl;
+	if (std::isfinite(value) &&	value >= std::numeric_limits<double>::min() &&
+		value <= std::numeric_limits<double>::max())
+			std::cout << GRN << "double: " << std::fixed << std::setprecision(1) << static_cast<double>(value) << RESET << std::endl;
+	else
+		std::cout << GRN << "double: " << "impossible" << RESET << std::endl;
 }
